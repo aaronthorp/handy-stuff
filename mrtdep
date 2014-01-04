@@ -1,0 +1,32 @@
+#/bin/sh
+
+appname=${PWD##*/}
+
+stop node-$appname
+
+rm /etc/nginx/conf.d/$appname.conf
+cp nginx.conf /etc/nginx/conf.d/$appname.conf
+
+service nginx reload
+
+mrt bundle /var/node/$appname.tgz
+
+rm /etc/init/node-$appname.conf
+cp init.conf /etc/init/node-$appname.conf
+
+cd /var/node
+
+tar -zxf $appname.tgz
+
+mkdir $appname
+
+cd $appname
+rm -rf *
+mv ../bundle/* .
+mv main.js $appname.js
+cd ..
+rm -rf bundle
+rm $appname.tgz
+echo "$appname Package Updated" > $appname.log
+
+start node-$appname

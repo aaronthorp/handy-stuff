@@ -1,0 +1,15 @@
+#!/bin/bash
+_git_origin="${1:-master}"
+echo "Pushing latest changes to repo '${_git_origin}'..."
+
+read -p "Commit Description: " desc
+
+if [[ $desc ]]
+    then
+	git add . && \
+	git add -u && \
+	git commit -m "$desc" && \
+	git push origin ${_git_origin}
+else
+	echo "Could not commit. No commit description provided."
+fi

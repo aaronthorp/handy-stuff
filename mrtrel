@@ -1,0 +1,16 @@
+#!/bin/bash
+_git_origin="${1:-master}"
+echo "Pushing latest module update to atmosphere..."
+
+desc="release package to atmosphere"
+if [[ $desc ]]
+    then
+	git add . && \
+	git add -u && \
+	git commit -m "$desc" && \
+	git push origin ${_git_origin} 
+  mrt release ./ && \
+else
+	echo "Could not commit. No commit description provided."
+fi
+

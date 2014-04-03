@@ -1,5 +1,7 @@
 #!/bin/bash
-_git_origin="${1:-master}"
+_curr=$(git rev-parse --abbrev-ref HEAD)
+
+_git_origin="${1:-${_curr}}"
 echo "Pushing latest changes to repo '${_git_origin}'..."
 
 read -p "Commit Description: " desc

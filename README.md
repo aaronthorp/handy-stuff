@@ -14,6 +14,7 @@ Commonly used on Ubuntu Linux servers.
 * `gitup <origin>` - Add all files, remove any deleted, get commit desc and push
 * `mrtdep` - Deploy Meteor.js project to `/var/node/<foldername>`. Required `nginx.conf` and `init.conf` files in project folder to work.
 * `mrtrel` - Deploy Meteor.js atmosphere package to atmosphere.
+* `gitinit <repository_url>` - Reconfigure a lost git project, run as `gitinit <repository_url>` in the directory and it will pull the `origin/master` branch.
 
 ### Sample Scripts
 

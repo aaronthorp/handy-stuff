@@ -1,0 +1,40 @@
+#!/bin/bash
+name="${1}"
+
+if [[ $name ]]
+    then
+	echo "Creating Boilerplate Meteor App '${name}'..."
+	mrt create ${name} && \
+	cd ${name} && \
+
+	mrt add iron-router
+	mrt add moment
+	mrt add peerdb
+	mrt add coffeescript
+	mrt add underscore
+	mrt add bootstrap-3
+	mrt add accounts-base
+	mrt add accounts-password
+	mrt add spin
+	mrt add nprogress
+	mrt add presence
+	mrt add less
+
+	mrt remove autopublish
+	mrt remove insecure
+	
+	rm -rf ${name}.*
+
+	mkdir -p server/publish server/methods
+	mkdir -p public/img public/fonts
+	mkdir -p collections
+	mkdir -p client/lib/router client/lib/accounts client/stylesheets
+	mkdir -p client/views 
+	mkdir -p lib
+
+	echo "Create Complete."
+else
+        echo "Could not create project. No project name specified."
+fi
+
+

@@ -1,0 +1,6 @@
+#/bin/sh
+
+folder="${PWD##*/}"
+
+modulus create project $folder
+modulus deploy -p $folder

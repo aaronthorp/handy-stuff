@@ -1,0 +1,5 @@
+#/bin/sh
+
+folder="${PWD##*/}"
+
+modulus project restart -p $folder
